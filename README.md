@@ -1,5 +1,6 @@
 # ANTLR 
 ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees.
+* [ANTLR - Official Documentation](https://github.com/antlr/antlr4/blob/master/doc/index.md)
 
 ## Setup
 * Download the file from the official page:
@@ -134,6 +135,7 @@ node script.js
 
 ---
 ## Useful links
+* [ANTLR - Official Documentation](https://github.com/antlr/antlr4/blob/master/doc/index.md)
 * [ANTLR - Official page](https://www.antlr.org)
 * [GitHub - antlr main repository](https://github.com/antlr/antlr4)
 * [GitHub - Grammars for the main languages](https://github.com/antlr/grammars-v4)
