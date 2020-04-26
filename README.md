@@ -9,17 +9,17 @@ ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for
     * macOS: `sudo curl -O https://www.antlr.org/download/antlr-4.8-complete.jar`
 
 * Copy the file downloaded to /usr/local/lib:
-```
+```bash
 sudo cp antlr-4.8-complete.jar /usr/local/lib/
 ```
 
 * Add antlr tool in your CLASSPATH
-```
+```bash
 export CLASSPATH=".:/usr/local/lib/antlr-4.8-complete.jar:$CLASSPATH"
 ```
 
 * Add aliases to simplify the use of ANTLR:
-```
+```bash
 alias antlr4="java -jar /usr/local/lib/antlr-4.8-complete.jar"
 alias grun="java org.antlr.v4.gui.TestRig"
 ```
@@ -28,7 +28,7 @@ alias grun="java org.antlr.v4.gui.TestRig"
 ## Java
 Let's suppose that your grammar is named, as above, "MyGrammar"
 **1.** Generare Lexer e Parser in base alla grammatica in ingresso:
-```
+```bash
 antlr4 MyGrammar.g4
 ```
 
@@ -38,32 +38,71 @@ antlr4 MyGrammar.g4
 * `MyGrammar.interp`, `MyGrammar.tokens`, `MyGrammarLexer.interp`, `MyGrammarLexer.tokens`: necessari ad antlr per riconoscere token e regole di parsing
 
 **2.** Compilare i file generati sopra
-```
+```bash
 javac MyGrammar*.java
 ```
 
 **3.** Usare il tool di Antlr ```TestRig``` (che noi abbiamo messo in alias come ```grun```)
-```
+```bash
 grun MyGrammar <start-rule> <input-file>  -[options]
 ```
 
 ---
 ## C++ (TODO)
-**1.** Generate Lexer and Parser from the input grammar:
+**1.** Let's suppose that your grammar is named "MyGrammar". Let's suppose the parser comprises a rule named "startRule" a fully functioning script might look like the following: 
+```c++
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "antlr4-runtime.h"
+#include "MyGrammarLexer.h"
+#include "MyGrammarParser.h"
+
+using namespace antlr4;
+using namespace std;
+
+int main(int argc, const char* argv[]) {
+  // Reads from file
+  std::ifstream stream;                       // stream for input file
+  stream.open(argv[1]);                       // open input file
+  ANTLRInputStream input(stream);
+
+  // Lexer step
+  MyGrammarLexer lexer(&input);
+  CommonTokenStream tokens(&lexer);
+
+  // Parser step
+  MyGrammarParser parser(&tokens);
+  tree::ParseTree *tree = parser.startRule();
+
+  return 0;
+}
 ```
-antlr4 -Dlanguage=Cpp MyGrammar.g4
+
+**2.** Generate Lexer and Parser and the executable file `main` from the input grammar:
+```bash
+make
+```
+this command generates: 
+* the folder `generated` where there are the files of the Parser and the Lexer 
+* the folder `output` where there are the output files of the compilation 
+* `main` executable
+
+**3.** Run the executable:
+```bash
+./main input-file
 ```
 
 ---
 ## Python
 
 **1.** Generate Lexer and Parser from the input grammar:
-```
+```bash
 antlr4 -Dlanguage=Python3 MyGrammar.g4
 ```
 
 **2.** Once you've generated the lexer and/or parser code, you need to install the runtime:
-```
+```bash
 pip3 install antlr4-python3-runtime
 ```
 The Python runtimes are available from PyPI:
@@ -93,19 +132,19 @@ if __name__ == '__main__':
 ```
 
 **4.** Run the script:
-```
+```bash
 python3 script.py input-file
 ```
 
 ---
 ## JavaScript
 **1.** Generate Lexer and Parser from the input grammar:
-```
+```bash
 antlr4 -Dlanguage=JavaScript MyGrammar.g4
 ```
 
 **2.** Once you've generated the lexer and/or parser code, you need to install the runtime:
-```
+```bash
 npm install antlr4
 ```
 The Python runtimes are available from PyPI:
@@ -130,7 +169,7 @@ var tree = parser.MyStartRule();
 ```
 
 **4.** Run the script:
-```
+```bash
 node script.js
 ```
 
