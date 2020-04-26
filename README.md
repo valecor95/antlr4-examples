@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
 **4.** Run the script:
 ```bash
-python3 script.py input-file
+python3 main.py input-file
 ```
 
 ---
@@ -173,7 +173,7 @@ var tree = parser.MyStartRule();
 
 **4.** Run the script:
 ```bash
-node script.js
+node main.js
 ```
 
 ---
