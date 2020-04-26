@@ -26,23 +26,24 @@ alias grun="java org.antlr.v4.gui.TestRig"
 
 ---
 ## Java
-Let's suppose that your grammar is named, as above, "MyGrammar"
-**1.** Generare Lexer e Parser in base alla grammatica in ingresso:
+Let's suppose that your grammar is named "MyGrammar"
+
+**1.** Generate Lexer and Parser from the input grammar:
 ```bash
 antlr4 MyGrammar.g4
 ```
 
-* `MyGrammarLexer.java`: analizzatore lessicale (lexer)
-* `MyGrammarParser.java`: analizzatore sintattico (parser)
-* `MyGrammarListener.java`, `MyGrammarBaseListener.java`: interfacce relative ai metodi del parser 
-* `MyGrammar.interp`, `MyGrammar.tokens`, `MyGrammarLexer.interp`, `MyGrammarLexer.tokens`: necessari ad antlr per riconoscere token e regole di parsing
+* `MyGrammarLexer.java`: the Lexer
+* `MyGrammarParser.java`: the Parser
+* `MyGrammarListener.java`, `MyGrammarBaseListener.java`: support interfaces
+* `MyGrammar.interp`, `MyGrammar.tokens`, `MyGrammarLexer.interp`, `MyGrammarLexer.tokens`: tokens and parsing rules
 
-**2.** Compilare i file generati sopra
+**2.** Compiles the generated files
 ```bash
 javac MyGrammar*.java
 ```
 
-**3.** Usare il tool di Antlr ```TestRig``` (che noi abbiamo messo in alias come ```grun```)
+**3.** Run the Antlr tool `TestRig` (we have setted it as `grun`)
 ```bash
 grun MyGrammar <start-rule> <input-file>  -[options]
 ```
@@ -53,7 +54,6 @@ grun MyGrammar <start-rule> <input-file>  -[options]
 ```c++
 #include <iostream>
 #include <fstream>
-#include <string>
 #include "antlr4-runtime.h"
 #include "MyGrammarLexer.h"
 #include "MyGrammarParser.h"
