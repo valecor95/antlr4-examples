@@ -2,6 +2,7 @@
 ANTLR (ANother Tool for Language Recognition) is a powerful parser generator for reading, processing, executing, or translating structured text or binary files. It's widely used to build languages, tools, and frameworks. From a grammar, ANTLR generates a parser that can build and walk parse trees.
 * [ANTLR - Official Documentation](https://github.com/antlr/antlr4/blob/master/doc/index.md)
 
+---
 ## Setup
 * Download the file from the official page:
     * Linux: `wget https://www.antlr.org/download/antlr-4.8-complete.jar`
