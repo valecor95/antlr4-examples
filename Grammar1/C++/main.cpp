@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string>
 #include "antlr4-runtime.h"
-#include "G2Lexer.h"
-#include "G2Parser.h"
+#include "G1Lexer.h"
+#include "G1Parser.h"
 
 using namespace antlr4;
 using namespace std;
@@ -11,12 +11,12 @@ using namespace std;
 int main(int argc, const char* argv[]) {
 
   // Reads from file
-	std::ifstream stream;                     // stream for input file
+  std::ifstream stream;                     // stream for input file
   stream.open(argv[1]);                     // open input file
   ANTLRInputStream input(stream);
 
   // Creates the Lexer
-  G2Lexer lexer(&input);
+  G1Lexer lexer(&input);
   CommonTokenStream tokens(&lexer);
 
   // Uncomment to print the tokens readed
@@ -29,7 +29,7 @@ int main(int argc, const char* argv[]) {
   */
 
   // Creates the Parser (parse_all is the starter rule)
-  G2Parser parser(&tokens);
+  G1Parser parser(&tokens);
   tree::ParseTree *tree = parser.parse_all();
   std::cout << "\n";
 
