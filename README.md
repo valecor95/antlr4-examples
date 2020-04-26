@@ -48,7 +48,7 @@ grun MyGrammar <start-rule> <input-file>  -[options]
 ```
 
 ---
-## C++ (TODO)
+## C++
 **1.** Let's suppose that your grammar is named "MyGrammar". Let's suppose the parser comprises a rule named "startRule" a fully functioning script might look like the following: 
 ```c++
 #include <iostream>
