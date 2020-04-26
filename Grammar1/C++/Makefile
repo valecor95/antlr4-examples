@@ -5,7 +5,7 @@ GRAMMAR=G1.g4
 ANTLR4=../../antlr-4.8-complete.jar
 
 # here is where you plug in the runtime for your OS
-RUNTIME=runtime-osx
+RUNTIME=runtime-linux
 CC=g++
 CCARGS=-c -I $(RUNTIME)/antlr4-runtime/ -I $(GENERATED) -std=c++11	
 LDARGS=-g

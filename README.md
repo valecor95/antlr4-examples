@@ -78,7 +78,6 @@ int main(int argc, const char* argv[]) {
   return 0;
 }
 ```
-
 **2.** Generate Lexer and Parser and the executable file `main` from the input grammar:
 ```bash
 make
@@ -88,6 +87,10 @@ this command generates:
 * the folder `output` where there are the output files of the compilation 
 * `main` executable
 
+**NOTE:** ONLY FOR macOS users: open the Makefile in the line where there is "RUNTIME" set:
+```bash
+RUNTIME=runtime-osx
+```
 **3.** Run the executable:
 ```bash
 ./main input-file

@@ -3,9 +3,10 @@ JAVA=/usr/bin/java
 OUTPUT=output
 GENERATED=generated
 GRAMMAR=G2.g4
+ANTLR4=../../antlr-4.8-complete.jar
 
 # here is where you plug in the runtime for your OS
-RUNTIME=runtime-osx
+RUNTIME=runtime-linux
 CC=g++
 CCARGS=-c -I $(RUNTIME)/antlr4-runtime/ -I $(GENERATED) -std=c++11	
 LDARGS=-g
@@ -22,7 +23,7 @@ main: dirs antlr4 main.cpp
 	$(CC) $(LDARGS) $(OUTPUT)/main.o $(OUTPUT)/G2BaseListener.o $(OUTPUT)/G2Lexer.o $(OUTPUT)/G2Listener.o $(OUTPUT)/G2Parser.o $(LIBS) -o main
 
 antlr4: $(GRAMMAR)
-	$(JAVA) -jar ../antlr-4.8-complete.jar -Dlanguage=Cpp -o $(GENERATED) $(GRAMMAR)
+	$(JAVA) -jar $(ANTLR4) -Dlanguage=Cpp -o $(GENERATED) $(GRAMMAR)
 
 dirs:
 	mkdir -p $(OUTPUT) 
