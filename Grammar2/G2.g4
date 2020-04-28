@@ -8,11 +8,4 @@ srule
     | srule srule
     | '(' ')';
 
-/* LL1
-assioma   
-    :  '(' term ')' term;
-
-term
-    : '(' term ')' term
-    | ;
-*/
+UNKNOWN_TOKEN: .;

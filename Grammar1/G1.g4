@@ -10,3 +10,5 @@ srule
     | 'b' 'b'
     | 'a'
     | 'b';
+
+UNKNOWN_TOKEN: .;
