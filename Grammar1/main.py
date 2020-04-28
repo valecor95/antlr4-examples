@@ -12,18 +12,17 @@ def main(argv):
     stream = CommonTokenStream(lexer)
 
     # Uncomment to print the tokens readed
-    # stream.fill()
-    # for token in stream.getTokens(0, input_stream.size):
-    #   print(str(token))
+    stream.fill()
+    for token in stream.getTokens(0, input_stream.size):
+        print(str(token))
 
     # Parser step
     parser = G1Parser(stream)
     tree = parser.parse_all()
     if(parser.getNumberOfSyntaxErrors() == 0): 
         print("SUCCESS: input string is parsed correctly")
-
-    # Uncomment to print the parsing tree
-    # print(tree.toStringTree(None, parser))
+        # Print the parsing tree
+        print(tree.toStringTree(None, parser))
  
 if __name__ == '__main__':
     main(sys.argv)

@@ -11,3 +11,4 @@ srule
 
 // Lexer rule
 KEY: [0-9]+;
+UNKNOWN_KEYWORD : .;

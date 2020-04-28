@@ -1,4 +1,4 @@
- #include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include "antlr4-runtime.h"
@@ -19,24 +19,22 @@ int main(int argc, const char* argv[]) {
   G1Lexer lexer(&input);
   CommonTokenStream tokens(&lexer);
 
-  // Uncomment to print the tokens readed
-  /*
+  // Print the tokens readed
   tokens.fill();
   for (auto token : tokens.getTokens()) {
     std::cout << token->toString() << std::endl;
   }
   std::cout << "\n";
-  */
 
   // Creates the Parser (parse_all is the starter rule)
   G1Parser parser(&tokens);
   tree::ParseTree *tree = parser.parse_all();
-  std::cout << "\n";
 
-  // Uncomment to print the parsing tree
-  /*
-  std::cout << tree->toStringTree(&parser) << std::endl;
-  */
+  if(parser.getNumberOfSyntaxErrors() == 0){
+    std::cout << "Parsing result = SUCCESS" << std::endl;
+    // Print the parsing tree
+    std::cout << tree->toStringTree(&parser) << std::endl;
+  }
 
   return 0;
 }
