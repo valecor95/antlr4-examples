@@ -28,5 +28,8 @@ public class Main {
       // Print the parsing tree
       System.out.println(tree.toStringTree(parser));
     }
+    var BtreeList = new PrintTreeListener();
+    ParseTreeWalker ptw = new ParseTreeWalker();
+    ptw.walk(BtreeList, tree);
   }
 }
