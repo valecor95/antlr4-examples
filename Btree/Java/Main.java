@@ -18,18 +18,17 @@ public class Main {
     for(Token token : tokens.getTokens()){
         System.out.println(token.toString());
     }
+    System.out.println();
 
     // Create the parser
     BtreeParser parser = new BtreeParser(tokens);
     ParseTree tree = parser.parse_all();
 
     if(parser.getNumberOfSyntaxErrors() == 0){
-      System.out.println("Parsing result = SUCCESS");
+      System.out.println("Parsing result = SUCCESS\n");
       // Print the parsing tree
       System.out.println(tree.toStringTree(parser));
+      System.out.println();
     }
-    var BtreeList = new PrintTreeListener();
-    ParseTreeWalker ptw = new ParseTreeWalker();
-    ptw.walk(BtreeList, tree);
   }
 }
