@@ -1,14 +1,18 @@
 import sys
 from antlr4 import *
-from G2Lexer import G2Lexer
-from G2Parser import G2Parser
+from BalPar2Lexer import BalPar2Lexer
+from BalPar2Parser import BalPar2Parser
  
 def main(argv):
     # Reads from file
+    if(len(argv) <= 1):
+        print("Usare: 'python3 main.py test-file")
+        return;
+        
     input_stream = FileStream(argv[1])
 
     # Lexer step
-    lexer = G2Lexer(input_stream)
+    lexer = BalPar2Lexer(input_stream)
     stream = CommonTokenStream(lexer)
 
     # Print the tokens readed
@@ -17,7 +21,7 @@ def main(argv):
         print(str(token))
 
     # Parser step
-    parser = G2Parser(stream)
+    parser = BalPar2Parser(stream)
     tree = parser.parse_all()
     if(parser.getNumberOfSyntaxErrors() == 0): 
         print("SUCCESS: input string is parsed correctly")

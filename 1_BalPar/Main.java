@@ -5,24 +5,29 @@ import java.io.IOException;
 
 public class Main {
   public static void main(String args[]) throws IOException{
-    // Reads from file
+    // Leggere input da file
+    if(args.length == 0){
+      System.out.println("Usare: 'java Main test'");
+      return;
+    }
     FileInputStream input_stream = new FileInputStream(args[0]);
     CharStream input = CharStreams.fromStream(input_stream); 
     
-    // Creates the Lexer
-    G2Lexer lexer = new G2Lexer(input);
+    // Creare l'oggetto Lexer
+    BalPar2Lexer lexer = new BalPar2Lexer(input);
     CommonTokenStream tokens = new CommonTokenStream(lexer); 
 
-    // Print the tokens readed
+    // Print token letti
     tokens.fill();
     for(Token token : tokens.getTokens()){
         System.out.println(token.toString());
     }
 
-    // Create the parser
-    G2Parser parser = new G2Parser(tokens);
+    // Creare il parser ed eseguire il parsing
+    BalPar2Parser parser = new BalPar2Parser(tokens);
     ParseTree tree = parser.parse_all();
 
+    // Risultato del parsing e print del parse tree
     if(parser.getNumberOfSyntaxErrors() == 0){
       System.out.println("Parsing result = SUCCESS");
       // Print the parsing tree
